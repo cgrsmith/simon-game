@@ -22,6 +22,8 @@ button {
   .circle .control .latchPair {
     display: flex;
     flex-direction: column; }
+    .circle .control .latchPair .latched {
+      background-color: red; }
 
 .circle {
   display: flex;
