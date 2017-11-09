@@ -1,0 +1,104 @@
+$circle-diam: 500px;
+$control-diam: $circle-diam*(5/8);
+$circle-border: 1px;
+
+$control-color: white;
+
+$circle-red: red;
+$circle-blue: blue;
+$circle-yellow: yellow;
+$circle-green: green;
+
+$circle-red-down: red;
+$circle-blue-down: blue;
+$circle-yellow-down: yellow;
+$circle-green-down: green;
+
+button {
+    background: none;
+    border: none;
+    padding: 0; margin: 0;
+    &:focus {
+        outline: none;
+    }
+}
+
+
+
+.circle {
+    .quadrant {
+        border:$circle-border solid black;
+    }
+    
+    .control {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $control-color;
+        border:$circle-border solid black; 
+        .panel {
+            display: flex;
+            flex-direction: row;
+        }
+        .latchPair {
+            display: flex;
+            flex-direction: column;
+            .latch {
+                
+            }
+            .unlatched {
+
+            }
+            .latched {
+
+            }
+        }
+    }
+}
+
+//Circle Configuration NO TOUCHIE!
+.circle {
+    display: flex;
+    flex-flow: row wrap;
+    width: $circle-diam + $circle-border*4; height: $circle-diam + $circle-border*4;
+    .quadrant {
+        width: $circle-diam/2; height: $circle-diam/2;
+    }
+    .green {  
+        background-color: $circle-green;
+    }
+    .red {
+        background-color: $circle-red;
+    }
+    .blue{ 
+        background-color: $circle-blue;
+    }
+    .yellow {
+        background-color: $circle-yellow;
+    }
+    .green.down {
+        background-color: $circle-green-down;
+    }
+    .red.down {
+        background-color: $circle-red-down;
+    }
+    .blue.down {
+        background-color: $circle-blue-down;
+    }
+    .yellow.down {
+        background-color: $circle-yellow-down;
+    }
+    .top-left { border-top-left-radius: $circle-diam/2; }
+    .top-right { border-top-right-radius: $circle-diam/2; }
+    .bottom-left { border-bottom-left-radius: $circle-diam/2; }
+    .bottom-right { border-bottom-right-radius: $circle-diam/2; }
+    .control {
+        width: $control-diam; height: $control-diam;
+        border-radius: 50%;
+        position: relative; 
+        top: -1*($circle-diam/2 + $control-diam/2 + $circle-border*2); 
+        right: -1*($circle-diam/2 - $control-diam/2+ $circle-border*2);
+        z-index: 1;
+    }
+}

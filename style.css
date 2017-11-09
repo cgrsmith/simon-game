@@ -1,0 +1,73 @@
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0; }
+  button:focus {
+    outline: none; }
+
+.circle .quadrant {
+  border: 1px solid black; }
+
+.circle .green {
+  background-color: green; }
+
+.circle .red {
+  background-color: red; }
+
+.circle .blue {
+  background-color: blue; }
+
+.circle .yellow {
+  background-color: yellow; }
+
+.circle .green.down {
+  background-color: orange; }
+
+.circle .red.down {
+  background-color: orange; }
+
+.circle .blue.down {
+  background-color: orange; }
+
+.circle .yellow.down {
+  background-color: orange; }
+
+.circle .control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid black; }
+  .circle .control .panel {
+    display: flex;
+    flex-direction: row; }
+  .circle .control .latchPair {
+    display: flex;
+    flex-direction: column; }
+
+.circle {
+  display: flex;
+  flex-flow: row wrap;
+  width: 504px;
+  height: 504px; }
+  .circle .quadrant {
+    width: 250px;
+    height: 250px; }
+  .circle .top-left {
+    border-top-left-radius: 250px; }
+  .circle .top-right {
+    border-top-right-radius: 250px; }
+  .circle .bottom-left {
+    border-bottom-left-radius: 250px; }
+  .circle .bottom-right {
+    border-bottom-right-radius: 250px; }
+  .circle .control {
+    width: 312.5px;
+    height: 312.5px;
+    border-radius: 50%;
+    position: relative;
+    top: -408.25px;
+    right: -95.75px;
+    z-index: 1; }

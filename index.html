@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="circle">
+        <button class="quadrant top-left green" id="green" value="green"></button>
+        <button class="quadrant top-right red" id="red" value="red"></button>
+        <button class="quadrant bottom-left yellow" id="yellow" value="yellow"></button>
+        <button class="quadrant bottom-right blue" id="blue" value="blue"></button>
+        <div class="control">
+            <h1>Simon Game</h1>
+            <p class="counter">0</p>
+            <div class="panel">
+                <div class="latchPair">
+                    <label class="buttonLabel" for="goButton">Stop</label>
+                    <button class="latch unlatched" id="goButton">O</button>
+                    <label class="buttonLabel" for="goButton">Go</label>
+                </div>
+                <div class="latchPair">
+                    <button class="latch unlatched" id="strictButton">O</button>
+                    <label class="buttonLabel" for="strictButton">Strict</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
