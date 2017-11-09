@@ -9,30 +9,6 @@ button {
 .circle .quadrant {
   border: 1px solid black; }
 
-.circle .green {
-  background-color: green; }
-
-.circle .red {
-  background-color: red; }
-
-.circle .blue {
-  background-color: blue; }
-
-.circle .yellow {
-  background-color: yellow; }
-
-.circle .green.down {
-  background-color: orange; }
-
-.circle .red.down {
-  background-color: orange; }
-
-.circle .blue.down {
-  background-color: orange; }
-
-.circle .yellow.down {
-  background-color: orange; }
-
 .circle .control {
   display: flex;
   flex-direction: column;
@@ -55,6 +31,22 @@ button {
   .circle .quadrant {
     width: 250px;
     height: 250px; }
+  .circle .green {
+    background-color: green; }
+  .circle .red {
+    background-color: red; }
+  .circle .blue {
+    background-color: blue; }
+  .circle .yellow {
+    background-color: yellow; }
+  .circle .green.down {
+    background-color: orange; }
+  .circle .red.down {
+    background-color: orange; }
+  .circle .blue.down {
+    background-color: orange; }
+  .circle .yellow.down {
+    background-color: orange; }
   .circle .top-left {
     border-top-left-radius: 250px; }
   .circle .top-right {
