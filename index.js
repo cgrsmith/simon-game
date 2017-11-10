@@ -37,12 +37,6 @@ class SimonGame {
         this.series = [];
         this.playerIndex = 0;
         this.strict = false;
-        this.colorMap = {
-            0 : "red",
-            1 : "blue",
-            2 : "yellow",
-            3 : "green"
-        }
     }
     start() {
         this.running = true;
@@ -57,9 +51,15 @@ class SimonGame {
         this.playerIndex = 0;
         $("#goButton").removeClass("latched");
     }
+
     addStep() {
-        let nextColor = this.colorMap[Math.floor(Math.random()*4)];
-        console.log("--"+nextColor);
+         const colorMap = {
+            0 : "red",
+            1 : "blue",
+            2 : "yellow",
+            3 : "green"
+        }
+        let nextColor = colorMap[Math.floor(Math.random()*4)];
         this.series.push(nextColor);
     }
 
@@ -71,7 +71,6 @@ class SimonGame {
 
     startPlayback(index) {
         this.playback = true;
-        console.log(this.series);
         if (index < this.series.length) {
             this.highlight($("#"+this.series[index]));
             let self = this;
@@ -85,15 +84,14 @@ class SimonGame {
     
     playerInput(color) {
         if (this.playback === false && this.running) {
-            console.log(color +" " + this.series[this.playerIndex]);
             if (this.series[this.playerIndex] === color) {            
                 this.playerIndex++;
-                //Completed a round
                 if (this.playerIndex === 5) {
                     //Game Over
                     console.log("player win");
                     this.reset();
                 } else if (this.series.length === this.playerIndex) {
+                    //Completed a round
                     this.playerIndex = 0;
                     this.addStep();
                     this.startPlayback(0);
