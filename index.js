@@ -11,11 +11,21 @@ $(document).ready(function() {
     });
     $("#goButton").click(function() {
         if (game.running) {
-            $(this).removeClass("latched");
             game.reset();
         } else {
             $(this).addClass("latched");
             game.start();
+        }
+    });
+    $("#strictButton").click(function() {
+        if (!game.running) {
+            if (game.strict) {
+                game.strict = false;
+                $(this).removeClass("latched");
+            } else {
+                game.strict = true;
+                $(this).addClass("latched");
+            }
         }
     });
 });
@@ -26,6 +36,7 @@ class SimonGame {
         this.running = false;
         this.series = [];
         this.playerIndex = 0;
+        this.strict = false;
         this.colorMap = {
             0 : "red",
             1 : "blue",
@@ -37,54 +48,77 @@ class SimonGame {
         this.running = true;
         this.playback = true;
         this.addStep();
-        this.pausePlayback(0);
+        this.startPlayback(0);
     }
     reset() {
         this.playback = false;
         this.running = false;
         this.series = [];
         this.playerIndex = 0;
+        $("#goButton").removeClass("latched");
     }
     addStep() {
-        let nextColor = this.colorMap[Math.floor(Math.random()*5)];
+        let nextColor = this.colorMap[Math.floor(Math.random()*4)];
+        console.log("--"+nextColor);
         this.series.push(nextColor);
-        this.series.push("red");
-        this.series.push("green");
     }
+
     pausePlayback(index) {
         this.unPressed();
         let self = this;
-        setTimeout(function() {self.startPlayback(index)},200);
+        setTimeout(function() {self.startPlayback(index + 1)},200);
     }
+
     startPlayback(index) {
-        console.log(this.series[index] +" " + index);
+        this.playback = true;
+        console.log(this.series);
         if (index < this.series.length) {
             this.highlight($("#"+this.series[index]));
             let self = this;
-            setTimeout(function() {self.pausePlayback(index + 1)},1000);
-        }
-        else {
-            $("#goButton").removeClass("latched");
-            this.reset();
-        }
-            
+            setTimeout(function() {self.pausePlayback(index)},1000);
+        }else {
+            //Completed a round, players go
+            this.playback = false;
+            this.running = true;
+        }    
     }
+    
     playerInput(color) {
-
+        if (this.playback === false && this.running) {
+            console.log(color +" " + this.series[this.playerIndex]);
+            if (this.series[this.playerIndex] === color) {            
+                this.playerIndex++;
+                //Completed a round
+                if (this.playerIndex === 5) {
+                    //Game Over
+                    console.log("player win");
+                    this.reset();
+                } else if (this.series.length === this.playerIndex) {
+                    this.playerIndex = 0;
+                    this.addStep();
+                    this.startPlayback(0);
+                }
+            } else if (this.strict) {
+                this.reset();
+                this.start();
+            } else {
+                this.playerIndex = 0;
+                this.startPlayback(0);
+            }
+        }
     }
+
     //Mousedown and Mouseup are purely visual/auditory, handle functionality with .click event 
     quadrantPressed(quadrant) {
         if (this.playback === false && this.running) {
-            this.highlight();
+            this.highlight(quadrant);
         }
     }
     highlight(quadrant) {
         quadrant.addClass("down");
     }
     unPressed() {
-        ///if (this.playback === false) {
-            $("*").removeClass("down");
-        //}
+        $("*").removeClass("down");
     }
 }
 
