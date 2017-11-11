@@ -1,18 +1,20 @@
 $circle-diam: 500px;
-$control-diam: $circle-diam*(5/8);
-$circle-border: 1px;
+$control-diam: $circle-diam*(9/16);
+$circle-border: 8px;
 
-$control-color: white;
+$control-color: #222;
+$border-color: #222;
+$font-color: #EEE;
 
-$circle-red: red;
-$circle-blue: blue;
-$circle-yellow: yellow;
-$circle-green: green;
+$circle-red: hsla(360, 100%, 35%, 1);
+$circle-blue: hsla(240, 100%, 35%, 1);
+$circle-yellow: hsla(60, 100%, 35%, 1);
+$circle-green: hsla(120, 100%, 35%, 1);
 
-$circle-red-down: orange;
-$circle-blue-down: orange;
-$circle-yellow-down: orange;
-$circle-green-down: orange;
+$circle-red-down: hsla(360, 100%, 60%, 1);
+$circle-blue-down: hsla(240, 100%, 60%, 1);
+$circle-yellow-down: hsla(60, 100%, 60%, 1);
+$circle-green-down: hsla(120, 100%, 60%, 1);
 
 button {
     background: none;
@@ -23,32 +25,55 @@ button {
     }
 }
 
-
+* {
+    color: $font-color;
+    font-family: sans-serif;
+}
+body {
+    background-color: $font-color;
+}
 
 .circle {
+    margin: auto;
+    margin-top: 160px;
+
     .quadrant {
-        border:$circle-border solid black;
+        border:$circle-border solid $border-color;
     }
-    
     .control {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: $control-color;
-        border:$circle-border solid black; 
+        border:$circle-border solid $border-color; 
         .panel {
             display: flex;
             flex-direction: row;
-        }
-        .latchPair {
-            display: flex;
-            flex-direction: column;
-            .latch {
-                
+            align-items: flex-end;
+            justify-content: space-around;
+            width: 100%;
+            .latchPair {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .latch {
+                    width: 2em; height: 2em;
+                    border-radius: 50%;
+                    border: solid 2px $font-color;
+                    background-color: $circle-red;
+                    margin: 0.5em 0;
+                }
+                .latched {
+                    background-color: $circle-red-down;
+                }
             }
-            .latched {
-                background-color: red;
+            p {
+                width: 2em;
+                text-align: center;
+                font-size: 2em;
+                margin: 0;
+                margin-bottom: 0.5em;
             }
         }
     }
@@ -94,8 +119,8 @@ button {
         width: $control-diam; height: $control-diam;
         border-radius: 50%;
         position: relative; 
-        top: -1*($circle-diam/2 + $control-diam/2 + $circle-border*2); 
-        right: -1*($circle-diam/2 - $control-diam/2+ $circle-border*2);
+        top: -1*($circle-diam/2 + $control-diam/2 + $circle-border); 
+        right: -1*($circle-diam/2 - $control-diam/2 - $circle-border);
         z-index: 1;
     }
 }

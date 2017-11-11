@@ -6,49 +6,75 @@ button {
   button:focus {
     outline: none; }
 
-.circle .quadrant {
-  border: 1px solid black; }
+* {
+  color: #EEE;
+  font-family: sans-serif; }
 
-.circle .control {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border: 1px solid black; }
-  .circle .control .panel {
+body {
+  background-color: #EEE; }
+
+.circle {
+  margin: auto;
+  margin-top: 160px; }
+  .circle .quadrant {
+    border: 8px solid #222; }
+  .circle .control {
     display: flex;
-    flex-direction: row; }
-  .circle .control .latchPair {
-    display: flex;
-    flex-direction: column; }
-    .circle .control .latchPair .latched {
-      background-color: red; }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    border: 8px solid #222; }
+    .circle .control .panel {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-around;
+      width: 100%; }
+      .circle .control .panel .latchPair {
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        .circle .control .panel .latchPair .latch {
+          width: 2em;
+          height: 2em;
+          border-radius: 50%;
+          border: solid 2px #EEE;
+          background-color: #b30000;
+          margin: 0.5em 0; }
+        .circle .control .panel .latchPair .latched {
+          background-color: #ff3333; }
+      .circle .control .panel p {
+        width: 2em;
+        text-align: center;
+        font-size: 2em;
+        margin: 0;
+        margin-bottom: 0.5em; }
 
 .circle {
   display: flex;
   flex-flow: row wrap;
-  width: 504px;
-  height: 504px; }
+  width: 532px;
+  height: 532px; }
   .circle .quadrant {
     width: 250px;
     height: 250px; }
   .circle .green {
-    background-color: green; }
+    background-color: #00b300; }
   .circle .red {
-    background-color: red; }
+    background-color: #b30000; }
   .circle .blue {
-    background-color: blue; }
+    background-color: #0000b3; }
   .circle .yellow {
-    background-color: yellow; }
+    background-color: #b3b300; }
   .circle .green.down {
-    background-color: orange; }
+    background-color: #33ff33; }
   .circle .red.down {
-    background-color: orange; }
+    background-color: #ff3333; }
   .circle .blue.down {
-    background-color: orange; }
+    background-color: #3333ff; }
   .circle .yellow.down {
-    background-color: orange; }
+    background-color: #ffff33; }
   .circle .top-left {
     border-top-left-radius: 250px; }
   .circle .top-right {
@@ -58,10 +84,10 @@ button {
   .circle .bottom-right {
     border-bottom-right-radius: 250px; }
   .circle .control {
-    width: 312.5px;
-    height: 312.5px;
+    width: 281.25px;
+    height: 281.25px;
     border-radius: 50%;
     position: relative;
-    top: -408.25px;
-    right: -95.75px;
+    top: -398.625px;
+    right: -101.375px;
     z-index: 1; }

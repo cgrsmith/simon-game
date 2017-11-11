@@ -50,6 +50,7 @@ class SimonGame {
         this.series = [];
         this.playerIndex = 0;
         $("#goButton").removeClass("latched");
+        //$("#counter").html("0");
     }
 
     addStep() {
@@ -70,7 +71,7 @@ class SimonGame {
     }
 
     startPlayback(index) {
-        this.playback = true;
+        $("#counter").html(this.series.length);
         if (index < this.series.length) {
             this.highlight($("#"+this.series[index]));
             let self = this;
@@ -78,26 +79,32 @@ class SimonGame {
         }else {
             //Completed a round, players go
             this.playback = false;
-            this.running = true;
         }    
     }
     
     playerInput(color) {
+        const totalRounds = 5;
         if (this.playback === false && this.running) {
+            let self = this;
             if (this.series[this.playerIndex] === color) {            
                 this.playerIndex++;
-                if (this.playerIndex === 5) {
-                    //Game Over
-                    console.log("player win");
+                //Game Over
+                if (this.playerIndex === totalRounds) {
+                    $("#counter").html("Win");
                     this.reset();
+                //Completed a round
                 } else if (this.series.length === this.playerIndex) {
                     //Completed a round
                     this.playerIndex = 0;
-                    this.addStep();
-                    this.startPlayback(0);
+                    this.playback = true;
+                    setTimeout(function() {
+                        self.addStep();
+                        self.startPlayback(0);
+                    }, 500);
                 }
             } else if (this.strict) {
-                this.reset();
+                this.series = [];
+                this.playerIndex = 0;
                 this.start();
             } else {
                 this.playerIndex = 0;
