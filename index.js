@@ -37,6 +37,12 @@ class SimonGame {
         this.series = [];
         this.playerIndex = 0;
         this.strict = false;
+        this.sounds = {
+            "red" : new Audio("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"),
+            "blue" : new Audio("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+            "yellow" : new Audio("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+            "green" : new Audio("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3")
+        }
     }
     start() {
         this.running = true;
@@ -83,7 +89,7 @@ class SimonGame {
     }
     
     playerInput(color) {
-        const totalRounds = 5;
+        const totalRounds = 20;
         if (this.playback === false && this.running) {
             let self = this;
             if (this.series[this.playerIndex] === color) {            
@@ -120,6 +126,8 @@ class SimonGame {
         }
     }
     highlight(quadrant) {
+        //this CAN be slow, price you pay
+        this.sounds[quadrant.val()].cloneNode().play();
         quadrant.addClass("down");
     }
     unPressed() {
